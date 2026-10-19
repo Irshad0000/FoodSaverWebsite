@@ -1,0 +1,403 @@
+﻿:root {
+    --fs-green: #1e7a2c;
+    --fs-green-dark: #175f22;
+    --fs-green-light: #e6f4ea;
+    --fs-green-accent: #57c66b;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    color: #222;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* ========== Navbar (public site) ========== */
+.navbar-brand {
+    font-weight: 700;
+    color: var(--fs-green) !important;
+    font-size: 1.35rem;
+}
+
+    .navbar-brand i {
+        color: var(--fs-green);
+    }
+
+.navbar .nav-link {
+    color: #2b2b2b;
+    font-weight: 500;
+    padding: 8px 14px !important;
+}
+
+    .navbar .nav-link:hover,
+    .navbar .nav-link.active {
+        color: var(--fs-green);
+    }
+
+    .navbar .nav-link.active {
+        border-bottom: 2px solid var(--fs-green);
+    }
+
+/* ========== Buttons ========== */
+.btn-success,
+.btn-fs {
+    background-color: var(--fs-green);
+    border-color: var(--fs-green);
+    color: #fff !important;
+    font-weight: 600;
+    border-radius: 8px;
+}
+
+    .btn-success:hover,
+    .btn-success:focus,
+    .btn-fs:hover,
+    .btn-fs:focus {
+        background-color: var(--fs-green-dark);
+        border-color: var(--fs-green-dark);
+        color: #fff !important;
+    }
+
+.btn-outline-fs {
+    border: 2px solid var(--fs-green);
+    color: var(--fs-green);
+    background: #fff;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+    .btn-outline-fs:hover {
+        background: var(--fs-green-light);
+        color: var(--fs-green);
+    }
+
+.link-green {
+    color: var(--fs-green);
+    font-weight: 500;
+}
+
+    .link-green:hover {
+        color: var(--fs-green-dark);
+        text-decoration: underline;
+    }
+
+/* ========== Hero (Home) ========== */
+.hero-section {
+    padding: 70px 0 90px;
+}
+
+.hero-title {
+    font-size: 3.6rem;
+    font-weight: 700;
+    color: var(--fs-green);
+    line-height: 1.05;
+    margin: 0;
+}
+
+    .hero-title .light {
+        color: var(--fs-green-accent);
+    }
+
+.hero-sub {
+    color: #555;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-top: 1.5rem;
+}
+
+.hero-image {
+    max-width: 480px;
+    width: 100%;
+}
+
+/* ========== Stats strip (Home) ========== */
+.stats-strip {
+    background: #f4f5f7;
+    padding: 55px 0;
+    border-top: 1px solid #e9e9e9;
+    border-bottom: 1px solid #e9e9e9;
+}
+
+.stat-block {
+    text-align: center;
+    padding: 10px 4px;
+}
+
+    .stat-block .num {
+        font-size: 2.1rem;
+        color: var(--fs-green);
+        font-weight: 700;
+    }
+
+    .stat-block .lbl {
+        color: #333;
+        font-size: 0.95rem;
+        margin-top: 6px;
+    }
+
+.stat-divider {
+    border-right: 1px solid #d9d9d9;
+}
+
+/* ========== Footer ========== */
+.site-footer {
+    background: #eef0f2;
+    padding: 22px 0;
+    font-size: 0.9rem;
+    color: #555;
+    margin-top: 0;
+}
+
+    .site-footer a {
+        color: #555;
+        margin-left: 18px;
+    }
+
+        .site-footer a:hover {
+            color: var(--fs-green);
+        }
+
+/* ========== Auth pages (Login, SignUp, ForgotPassword) ========== */
+.auth-wrapper {
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f5f6f8;
+    padding: 50px 15px;
+}
+
+.auth-card {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, .07);
+    padding: 45px 50px;
+    width: 100%;
+    max-width: 1040px;
+}
+
+.auth-left {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 20px;
+}
+
+    .auth-left .brand {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        color: var(--fs-green);
+        font-weight: 700;
+        font-size: 1.35rem;
+        white-space: nowrap; /* keep image and text on same line */
+    }
+
+    .auth-left .brand img {
+        height: 40px;
+        width: auto;
+        display: block;
+        margin: 0;
+    }
+
+    .auth-left .brand span {
+        display: inline-block;
+        line-height: 1;
+    }
+
+        .auth-left .brand i {
+            margin-right: 6px;
+        }
+
+    .auth-left h2 {
+        font-weight: 700;
+        font-size: 1.9rem;
+        margin: 22px 0 10px;
+    }
+
+    .auth-left p {
+        color: #666;
+        font-size: 0.95rem;
+        max-width: 280px;
+        line-height: 1.6;
+    }
+
+    /* Target only the large decorative image inside auth-left (direct child), not the small brand logo */
+    .auth-left > img {
+        max-width: 240px;
+        margin-top: 30px;
+        display: block;
+    }
+
+.form-label {
+    font-weight: 500;
+    font-size: 0.88rem;
+    color: #333;
+    margin-bottom: 6px;
+}
+
+.form-control, .form-select {
+    border-radius: 10px;
+    padding: 12px 14px;
+    border: 1px solid #dfe3e6;
+    font-size: 0.95rem;
+    box-shadow: none !important;
+}
+
+    .form-control:focus, .form-select:focus {
+        border-color: var(--fs-green);
+        box-shadow: 0 0 0 3px rgba(30, 122, 44, .12) !important;
+    }
+
+.form-check-input:checked {
+    background-color: var(--fs-green);
+    border-color: var(--fs-green);
+}
+
+/* ========== Success pages (Thank You / Request sent) ========== */
+.success-wrapper {
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    padding: 40px 15px;
+    text-align: center;
+}
+
+.success-card {
+    background: #fff;
+    border-radius: 18px;
+    border: 1px solid #eee;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, .05);
+    padding: 50px 60px;
+    max-width: 540px;
+    width: 100%;
+}
+
+.check-circle {
+    width: 90px;
+    height: 90px;
+    background: var(--fs-green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 46px;
+    margin: 0 auto 26px;
+    box-shadow: 0 0 0 12px var(--fs-green-light);
+}
+
+.success-title {
+    color: var(--fs-green);
+    font-weight: 700;
+    font-size: 1.55rem;
+    margin-bottom: 12px;
+}
+
+.success-sub {
+    color: #555;
+    font-size: 0.98rem;
+    margin-bottom: 26px;
+    line-height: 1.6;
+}
+/* Fix logo image alignment */
+.navbar-brand,
+.sidebar-brand {
+    display: inline-flex;
+    align-items: center;
+}
+
+    .navbar-brand img,
+    .sidebar-brand img {
+        display: block;
+        vertical-align: middle;
+        transform: translateY(-1px); /* nudge up 1px to sit level with text */
+    }
+/* ============================================
+   LOGO ALIGNMENT FIX
+   ============================================ */
+
+/* Navbar brand: flex, centered vertically, image + text as flex items */
+.navbar-brand {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 10px;
+    padding: 0;
+    height: 48px; /* fixed height so children center within it */
+}
+
+    .navbar-brand img {
+        display: block !important;
+        height: 34px;
+        width: auto;
+        object-fit: contain;
+        margin: 0;
+    }
+
+    .navbar-brand span {
+        line-height: 1;
+        font-weight: 700;
+        color: var(--fs-green);
+        display: inline-block;
+    }
+
+/* Sidebar brand: same treatment */
+.sidebar-brand {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px;
+    padding: 4px 8px 20px;
+    height: auto;
+}
+
+    .sidebar-brand img {
+        display: block !important;
+        height: 30px;
+        width: auto;
+        object-fit: contain;
+        margin: 0;
+        flex-shrink: 0;
+    }
+
+    .sidebar-brand span {
+        line-height: 1;
+        font-weight: 700;
+        color: var(--fs-green);
+    }
+
+/* Auth page brand (Login / SignUp) */
+.auth-left .brand {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px;
+    line-height: 1;
+}
+
+    .auth-left .brand img {
+        display: block !important;
+        height: 30px;
+        width: auto;
+        object-fit: contain;
+        margin: 0;
+    }
+
+    .auth-left .brand span {
+        line-height: 1;
+        font-weight: 700;
+        color: var(--fs-green);
+    }
