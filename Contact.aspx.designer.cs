@@ -24,6 +24,15 @@ namespace FoodSaver
         protected global::System.Web.UI.WebControls.Label lblMsg;
 
         /// <summary>
+        /// vsContact control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary vsContact;
+
+        /// <summary>
         /// txtName control.
         /// </summary>
         /// <remarks>
@@ -40,15 +49,6 @@ namespace FoodSaver
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvContactName;
-
-        /// <summary>
-        /// revContactName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator revContactName;
 
         /// <summary>
         /// txtEmail control.
@@ -103,5 +103,14 @@ namespace FoodSaver
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSend;
+
+        /// <summary>
+        /// gvContacts control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvContacts;
     }
 }

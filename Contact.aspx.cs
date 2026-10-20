@@ -1,51 +1,111 @@
 ﻿using System;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Web.UI;
 
 namespace FoodSaver
 {
     public partial class Contact : Page
     {
+        private string ConnectionString
+        {
+            get
+            {
+                return ConfigurationManager
+                    .ConnectionStrings["FoodSaverDb"]
+                    .ConnectionString;
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                BindContactMessages();
+            }
         }
 
         protected void btnSend_Click(object sender, EventArgs e)
         {
-            if (!Page.IsValid) return;
+            Page.Validate("ContactForm");
 
-            // Save to database. Assumes a table named Contacts (Name, Email, Message, CreatedAt)
+            if (!Page.IsValid)
+                return;
+
+            string sql = @"
+                INSERT INTO ContactMessages
+                    ([Name], [Email], [Message])
+                VALUES
+                    (@Name, @Email, @Message)";
+
             try
             {
-                var sql = "INSERT INTO Contacts([yourname],[email],[message]) VALUES(@name,@email,CONVERT(varbinary(150), @msg))";
-                var prms = new System.Data.SqlClient.SqlParameter[] {
-                    new System.Data.SqlClient.SqlParameter("@name", txtName.Text.Trim()),
-                    new System.Data.SqlClient.SqlParameter("@email", string.IsNullOrWhiteSpace(txtEmail.Text)? (object)DBNull.Value : txtEmail.Text.Trim()),
-                    new System.Data.SqlClient.SqlParameter("@msg", txtMsg.Text.Trim())
-                };
+                using (SqlConnection con =
+                    new SqlConnection(ConnectionString))
+                using (SqlCommand cmd =
+                    new SqlCommand(sql, con))
+                {
+                    cmd.Parameters.Add(
+                        "@Name", SqlDbType.NVarChar, 100
+                    ).Value = txtName.Text.Trim();
 
-                DbHelper.ExecuteNonQuery(sql, prms);
+                    cmd.Parameters.Add(
+                        "@Email", SqlDbType.NVarChar, 150
+                    ).Value = txtEmail.Text.Trim();
+
+                    cmd.Parameters.Add(
+                        "@Message", SqlDbType.NVarChar, -1
+                    ).Value = txtMsg.Text.Trim();
+
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                }
 
                 lblMsg.CssClass = "text-success d-block mb-2";
-                lblMsg.Text = "Thanks! We'll get back to you shortly.";
+                lblMsg.Text =
+                    "Thank you! Your message was submitted successfully.";
+
                 txtName.Text = "";
                 txtEmail.Text = "";
                 txtMsg.Text = "";
-            }
-            catch (Exception ex)
-            {
-                // Log the exception to App_Data so the developer can inspect the cause.
-                try
-                {
-                    var logPath = Server.MapPath("~/App_Data/ContactErrors.log");
-                    var log = $"[{DateTime.UtcNow:u}] Error inserting contact. Name={txtName.Text}, Email={txtEmail.Text}\n{ex}\n";
-                    System.IO.File.AppendAllText(logPath, log);
-                }
-                catch { /* ignore logging errors */ }
 
+                BindContactMessages();
+            }
+            catch (Exception)
+            {
                 lblMsg.CssClass = "text-danger d-block mb-2";
-                lblMsg.Text = "An error occurred while sending your message. The error has been logged.";
+                lblMsg.Text =
+                    "Unable to save your message. Please check your database table and connection.";
             }
         }
 
+        private void BindContactMessages()
+        {
+            string sql = @"
+                SELECT Id, [Name], [Email], [Message], CreatedAt
+                FROM ContactMessages
+                ORDER BY CreatedAt DESC";
+
+            try
+            {
+                using (SqlConnection con =
+                    new SqlConnection(ConnectionString))
+                using (SqlDataAdapter da =
+                    new SqlDataAdapter(sql, con))
+                {
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    gvContacts.DataSource = dt;
+                    gvContacts.DataBind();
+                }
+            }
+            catch (Exception)
+            {
+                gvContacts.DataSource = null;
+                gvContacts.DataBind();
+            }
+        }
     }
 }
