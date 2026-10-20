@@ -70,5 +70,6 @@ namespace FoodSaver
             lblMsg.CssClass = "d-block mb-3 text-success";
             lblMsg.Text = "You can edit your details in the form on the right, then click Save Changes.";
         }
+
     }
 }

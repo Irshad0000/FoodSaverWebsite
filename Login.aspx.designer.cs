@@ -33,6 +33,24 @@ namespace FoodSaver
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
 
         /// <summary>
+        /// rfvLoginEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvLoginEmail;
+
+        /// <summary>
+        /// revLoginEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revLoginEmail;
+
+        /// <summary>
         /// txtPwd control.
         /// </summary>
         /// <remarks>
@@ -42,6 +60,15 @@ namespace FoodSaver
         protected global::System.Web.UI.WebControls.TextBox txtPwd;
 
         /// <summary>
+        /// rfvLoginPwd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvLoginPwd;
+
+        /// <summary>
         /// chkRemember control.
         /// </summary>
         /// <remarks>
@@ -49,15 +76,6 @@ namespace FoodSaver
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkRemember;
-
-        /// <summary>
-        /// vsLogin control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary vsLogin;
 
         /// <summary>
         /// btnLogin control.

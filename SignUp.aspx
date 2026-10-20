@@ -35,11 +35,14 @@
           <label class="form-label">Full Name</label>
           <asp:TextBox ID="txtName" runat="server" CssClass="form-control" placeholder="Enter your full name" />
           <asp:RequiredFieldValidator ID="rfvName" runat="server" ControlToValidate="txtName" ErrorMessage="Full name is required." Display="Dynamic" CssClass="text-danger" />
+          <asp:RegularExpressionValidator ID="revName" runat="server" ControlToValidate="txtName"
+              ErrorMessage="Name can contain letters and spaces only." Display="Dynamic" CssClass="text-danger"
+              ValidationExpression="^[A-Za-z ]+$" />
         </div>
 
         <div class="mb-3">
           <label class="form-label">Email Address</label>
-          <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" TextMode="Email" placeholder="Enter your email" />
+          <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" TextMode="SingleLine" placeholder="Enter your email" />
           <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ControlToValidate="txtEmail" ErrorMessage="Email is required." Display="Dynamic" CssClass="text-danger" />
           <asp:RegularExpressionValidator ID="revEmail" runat="server" ControlToValidate="txtEmail" ErrorMessage="Enter a valid email." Display="Dynamic" CssClass="text-danger" ValidationExpression="^[^@\s]+@[^@\s]+\.[^@\s]+$" />
         </div>
@@ -48,6 +51,9 @@
           <label class="form-label">Phone Number</label>
           <asp:TextBox ID="txtPhone" runat="server" CssClass="form-control" placeholder="Enter your phone number" />
           <asp:RequiredFieldValidator ID="rfvPhone" runat="server" ControlToValidate="txtPhone" ErrorMessage="Phone is required." Display="Dynamic" CssClass="text-danger" />
+          <asp:RegularExpressionValidator ID="revPhone" runat="server" ControlToValidate="txtPhone"
+              ErrorMessage="Enter a valid phone number." Display="Dynamic" CssClass="text-danger"
+              ValidationExpression="^[0-9]{7,15}$" />
         </div>
 
         <div class="mb-3">
@@ -71,8 +77,6 @@
           <asp:RequiredFieldValidator ID="rfvConfirm" runat="server" ControlToValidate="txtConfirm" ErrorMessage="Please confirm password." Display="Dynamic" CssClass="text-danger" />
           <asp:CompareValidator ID="cmpPwd" runat="server" ControlToValidate="txtConfirm" ControlToCompare="txtPwd" ErrorMessage="Passwords do not match." Display="Dynamic" CssClass="text-danger" />
         </div>
-
-        <asp:ValidationSummary ID="vsSignUp" runat="server" CssClass="text-danger mb-3" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" />
 
         <asp:Button ID="btnSignUp" runat="server" Text="Create an Account"
                     CssClass="btn btn-success w-100 py-2" OnClick="btnSignUp_Click" />

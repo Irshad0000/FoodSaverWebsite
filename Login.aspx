@@ -34,14 +34,21 @@
 
         <div class="mb-3">
           <label class="form-label">Email Address</label>
-          <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" TextMode="Email"
+          <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" TextMode="SingleLine"
                        placeholder="Enter your email" />
+          <asp:RequiredFieldValidator ID="rfvLoginEmail" runat="server" ControlToValidate="txtEmail"
+              ErrorMessage="Email is required." Display="Dynamic" CssClass="text-danger" />
+          <asp:RegularExpressionValidator ID="revLoginEmail" runat="server" ControlToValidate="txtEmail"
+              ErrorMessage="Enter a valid email address." Display="Dynamic" CssClass="text-danger"
+              ValidationExpression="^[^@\s]+@[^@\s]+\.[^@\s]+$" />
         </div>
 
         <div class="mb-3">
           <label class="form-label">Password</label>
           <asp:TextBox ID="txtPwd" runat="server" CssClass="form-control" TextMode="Password"
                        placeholder="Enter your password" />
+          <asp:RequiredFieldValidator ID="rfvLoginPwd" runat="server" ControlToValidate="txtPwd"
+              ErrorMessage="Password is required." Display="Dynamic" CssClass="text-danger" />
         </div>
 
         <div class="d-flex justify-content-between align-items-center mb-4">
@@ -51,8 +58,6 @@
           </div>
           <a href="ForgotPassword.aspx" class="link-green">Forgot Password?</a>
         </div>
-
-        <asp:ValidationSummary ID="vsLogin" runat="server" CssClass="text-danger mb-3" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" />
 
         <asp:Button ID="btnLogin" runat="server" Text="Login"
                     CssClass="btn btn-success w-100 py-2" OnClick="btnLogin_Click" />

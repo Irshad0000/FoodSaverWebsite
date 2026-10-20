@@ -11,17 +11,12 @@ namespace FoodSaver
 
         protected void btnSend_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtName.Text) || string.IsNullOrWhiteSpace(txtMsg.Text))
-            {
-                lblMsg.CssClass = "text-danger d-block mb-2";
-                lblMsg.Text = "Please fill in your name and message.";
-                return;
-            }
+            if (!Page.IsValid) return;
 
             // Save to database. Assumes a table named Contacts (Name, Email, Message, CreatedAt)
             try
             {
-                var sql = "INSERT INTO Contacts([Name],[Email],[Message],[CreatedAt]) VALUES(@name,@email,@msg,GETDATE())";
+                var sql = "INSERT INTO Contacts([yourname],[email],[message]) VALUES(@name,@email,CONVERT(varbinary(150), @msg))";
                 var prms = new System.Data.SqlClient.SqlParameter[] {
                     new System.Data.SqlClient.SqlParameter("@name", txtName.Text.Trim()),
                     new System.Data.SqlClient.SqlParameter("@email", string.IsNullOrWhiteSpace(txtEmail.Text)? (object)DBNull.Value : txtEmail.Text.Trim()),
@@ -51,5 +46,6 @@ namespace FoodSaver
                 lblMsg.Text = "An error occurred while sending your message. The error has been logged.";
             }
         }
+
     }
 }
