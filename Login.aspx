@@ -8,9 +8,17 @@
       <!-- LEFT PANEL -->
       <div class="col-md-5">
         <div class="auth-left">
-   <div class="brand">
-    <img src="Images/logo-public.png" alt="FoodSaver" />
-    <span>FoodSaver</span>
+
+<div class="brand" style="display: flex !important; flex-direction: row !important; align-items: center !important; justify-content: center; gap: 8px; width: 100%; white-space: nowrap;">
+
+    <img src="Images/logo-public.png"
+         alt="FoodSaver"
+         style="display: block !important; width: 32px !important; height: 32px !important; object-fit: contain; margin: 0 !important; padding: 0; flex-shrink: 0; transform: translateY(-3px);" />
+
+    <span style="display: inline-block !important; margin: 0 !important; padding: 0; line-height: 32px; font-size: 1.25rem; font-weight: 700; color: #1e7a2c;">
+        FoodSaver
+    </span>
+
 </div>
           <h2>Welcome Back!</h2>
           <p>Glad to see you again. Please login to continue.</p>
@@ -43,6 +51,8 @@
           </div>
           <a href="ForgotPassword.aspx" class="link-green">Forgot Password?</a>
         </div>
+
+        <asp:ValidationSummary ID="vsLogin" runat="server" CssClass="text-danger mb-3" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" />
 
         <asp:Button ID="btnLogin" runat="server" Text="Login"
                     CssClass="btn btn-success w-100 py-2" OnClick="btnLogin_Click" />

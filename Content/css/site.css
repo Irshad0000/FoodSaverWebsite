@@ -171,7 +171,7 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #f5f6f8;
+    background: #fff;
     padding: 50px 15px;
 }
 
@@ -261,6 +261,42 @@ a {
         border-color: var(--fs-green);
         box-shadow: 0 0 0 3px rgba(30, 122, 44, .12) !important;
     }
+
+/* Keep input backgrounds white when focused, filled, or autofilled (override browser / bootstrap defaults) */
+.form-control:focus,
+.form-control:not(:placeholder-shown),
+.form-control:-webkit-autofill,
+.form-control:-internal-autofill-selected {
+    background-color: #fff !important;
+    color: #212529 !important;
+}
+
+/* Chrome / WebKit autofill override */
+input.form-control:-webkit-autofill,
+textarea.form-control:-webkit-autofill,
+select.form-control:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+    box-shadow: 0 0 0 1000px #fff inset !important;
+    -webkit-text-fill-color: #212529 !important;
+}
+
+/* Extra overrides for autofill across browsers and focus states */
+.form-control:-webkit-autofill,
+.form-control:-webkit-autofill:focus,
+.auth-card .form-control:-webkit-autofill,
+.auth-card .form-control:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+    box-shadow: 0 0 0 1000px #fff inset !important;
+    -webkit-text-fill-color: #212529 !important;
+    background-color: #fff !important;
+}
+
+/* Firefox autofill */
+.form-control:-moz-autofill,
+.auth-card .form-control:-moz-autofill {
+    box-shadow: 0 0 0 1000px #fff inset !important;
+    background-color: #fff !important;
+}
 
 .form-check-input:checked {
     background-color: var(--fs-green);
@@ -383,21 +419,59 @@ a {
 /* Auth page brand (Login / SignUp) */
 .auth-left .brand {
     display: inline-flex !important;
+    align-items: center !important; /* center vertically */
+    gap: 10px;
+    white-space: nowrap; /* keep on one line */
+}
+
+.auth-left .brand img {
+    display: inline-block !important;
+    height: 28px; /* slightly smaller logo to match text height */
+    width: auto;
+    object-fit: contain;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.auth-left .brand span {
+    display: inline-block;
+    margin: 0;
+    font-size: 1.25rem; /* adjust to visually match provided example */
+    font-weight: 700;
+    color: var(--fs-green);
+    line-height: 1; /* ensure no extra vertical spacing */
+    transform: translateY(0); /* reset any previous nudges */
+}
+
+/* Fix FoodSaver logo and text alignment on Login and SignUp pages */
+.auth-left .brand {
+    display: inline-flex !important;
+    flex-direction: row !important;
     align-items: center !important;
+    justify-content: center;
     gap: 8px;
+    white-space: nowrap;
     line-height: 1;
+    margin: 0 auto;
 }
 
     .auth-left .brand img {
         display: block !important;
-        height: 30px;
-        width: auto;
+        width: 32px;
+        height: 32px;
         object-fit: contain;
-        margin: 0;
+        margin: 0 !important;
+        padding: 0;
+        flex-shrink: 0;
     }
 
     .auth-left .brand span {
+        display: block !important;
+        margin: 0 !important;
+        padding: 0;
         line-height: 1;
+        font-size: 1.25rem;
         font-weight: 700;
         color: var(--fs-green);
+        transform: none !important;
     }

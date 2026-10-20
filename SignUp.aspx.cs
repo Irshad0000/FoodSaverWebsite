@@ -6,27 +6,13 @@ namespace FoodSaver
 {
     public partial class SignUp : Page
     {
+        protected void cvPwdLength_ServerValidate(object source, System.Web.UI.WebControls.ServerValidateEventArgs args)
+        {
+            args.IsValid = !string.IsNullOrEmpty(args.Value) && args.Value.Length >= 6;
+        }
         protected void btnSignUp_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtName.Text) ||
-                string.IsNullOrWhiteSpace(txtEmail.Text) ||
-                string.IsNullOrWhiteSpace(txtPwd.Text))
-            {
-                lblMsg.Text = "Please fill all required fields.";
-                return;
-            }
-
-            if (txtPwd.Text != txtConfirm.Text)
-            {
-                lblMsg.Text = "Passwords do not match.";
-                return;
-            }
-
-            if (txtPwd.Text.Length < 6)
-            {
-                lblMsg.Text = "Password must be at least 6 characters.";
-                return;
-            }
+            if (!Page.IsValid) return;
 
             var exists = DbHelper.ExecuteScalar(
                 "SELECT COUNT(*) FROM Users WHERE Email=@e",

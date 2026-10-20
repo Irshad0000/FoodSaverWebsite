@@ -18,11 +18,7 @@ namespace FoodSaver
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtEmail.Text) || string.IsNullOrWhiteSpace(txtPwd.Text))
-            {
-                lblMsg.Text = "Please enter email and password.";
-                return;
-            }
+            if (!Page.IsValid) return;
 
             var dt = DbHelper.ExecuteQuery(
                 "SELECT TOP 1 * FROM Users WHERE Email=@e AND Password=@p",
