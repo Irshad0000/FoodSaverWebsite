@@ -20,10 +20,6 @@ namespace FoodSaver
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                BindContactMessages();
-            }
         }
 
         protected void btnSend_Click(object sender, EventArgs e)
@@ -70,7 +66,6 @@ namespace FoodSaver
                 txtEmail.Text = "";
                 txtMsg.Text = "";
 
-                BindContactMessages();
             }
             catch (Exception)
             {
@@ -80,32 +75,5 @@ namespace FoodSaver
             }
         }
 
-        private void BindContactMessages()
-        {
-            string sql = @"
-                SELECT Id, [Name], [Email], [Message], CreatedAt
-                FROM ContactMessages
-                ORDER BY CreatedAt DESC";
-
-            try
-            {
-                using (SqlConnection con =
-                    new SqlConnection(ConnectionString))
-                using (SqlDataAdapter da =
-                    new SqlDataAdapter(sql, con))
-                {
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-
-                    gvContacts.DataSource = dt;
-                    gvContacts.DataBind();
-                }
-            }
-            catch (Exception)
-            {
-                gvContacts.DataSource = null;
-                gvContacts.DataBind();
-            }
-        }
     }
 }

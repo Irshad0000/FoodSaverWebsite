@@ -137,41 +137,6 @@
 
     </div>
 
-    <!-- Submitted Messages -->
-    <div class="mt-5">
-        <h3 class="mb-3">Submitted Contact Messages</h3>
-
-        <div class="table-responsive">
-            <asp:GridView ID="gvContacts" runat="server"
-                AutoGenerateColumns="False"
-                CssClass="table table-bordered table-striped"
-                GridLines="Horizontal"
-                EmptyDataText="No contact messages found."
-                DataKeyNames="Id"
-                HeaderStyle-CssClass="table-success">
-
-                <Columns>
-                    <asp:BoundField DataField="Id"
-                        HeaderText="ID" />
-
-                    <asp:BoundField DataField="Name"
-                        HeaderText="Name" />
-
-                    <asp:BoundField DataField="Email"
-                        HeaderText="Email" />
-
-                    <asp:BoundField DataField="Message"
-                        HeaderText="Message" />
-
-                    <asp:BoundField DataField="CreatedAt"
-                        HeaderText="Submitted At"
-                        DataFormatString="{0:dd-MM-yyyy HH:mm}" />
-                </Columns>
-
-            </asp:GridView>
-        </div>
-    </div>
-
 </section>
 
 </asp:Content>
