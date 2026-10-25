@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Admin.Master" AutoEventWireup="true" CodeBehind="ManageUsers.aspx.cs" Inherits="FoodSaver.ManageUsers" %>
+﻿//This is adimn manageuser
+<%@ Page Language="C#" MasterPageFile="~/Admin.Master" AutoEventWireup="true" CodeBehind="ManageUsers.aspx.cs" Inherits="FoodSaver.ManageUsers" %>
 <asp:Content ID="C1" ContentPlaceHolderID="MainContent" runat="server">
 
 <div class="db-header">

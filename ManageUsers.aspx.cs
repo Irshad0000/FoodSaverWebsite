@@ -1,4 +1,5 @@
-﻿using System;
+﻿//this is manage user.aspx.cs
+using System;
 using System.Data.SqlClient;
 using System.Web.UI;
 using System.Web.UI.WebControls;
