@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Admin.Master" AutoEventWireup="true" CodeBehind="AdminDashboard.aspx.cs" Inherits="FoodSaver.AdminDashboard" %>
+﻿//This is the admin-dashboard
+<%@ Page Language="C#" MasterPageFile="~/Admin.Master" AutoEventWireup="true" CodeBehind="AdminDashboard.aspx.cs" Inherits="FoodSaver.AdminDashboard" %>
 <asp:Content ID="C1" ContentPlaceHolderID="MainContent" runat="server">
 
 <div class="db-header">
