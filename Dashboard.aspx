@@ -1,11 +1,13 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Dashboard.Master" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="FoodSaver.DashboardPage" %>
 <asp:Content ID="C1" ContentPlaceHolderID="MainContent" runat="server">
+    <%-- Dashboard page - shows summary stats and recent donations/available food for the user --%>
 
 <div class="db-header">
   <h2>Dashboard</h2>
   <div class="hello">Hello, <asp:Label ID="lblName" runat="server" /> 👋</div>
 </div>
 
+    <%-- Stat cards - counts are filled from code-behind on page load --%>
 <!-- STAT CARDS -->
 <div class="stats-row">
   <div class="stat-card">
@@ -38,11 +40,13 @@
   </div>
 </div>
 
+    <%-- Two panels side by side: user's recent donations and nearby available food --%>
 <!-- TWO PANELS -->
 <div class="row g-3">
   <div class="col-md-7">
     <div class="panel h-100">
       <h5>Recent Donations</h5>
+        <%-- Recent donations list with image fallback and status badge --%>
       <asp:Repeater ID="rptDonations" runat="server">
         <ItemTemplate>
           <div class="list-row">
@@ -77,6 +81,7 @@
   <div class="col-md-5">
     <div class="panel h-100">
       <h5>Available Food Near You</h5>
+        <%-- Nearby available food - each row links to the AvailableFood page --%>
       <asp:Repeater ID="rptAvailable" runat="server">
         <ItemTemplate>
           <div class="list-row">

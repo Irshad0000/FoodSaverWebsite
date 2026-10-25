@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Dashboard.Master" AutoEventWireup="true" CodeBehind="Profile.aspx.cs" Inherits="FoodSaver.Profile" %>
 <asp:Content ID="C1" ContentPlaceHolderID="MainContent" runat="server">
+    <%-- Profile page - shows user details and lets them edit their personal information --%>
 
 <div class="db-header">
   <h2>Profile</h2>
@@ -7,11 +8,13 @@
 
 <asp:Label ID="lblMsg" runat="server" CssClass="d-block mb-3" />
 
+    <%-- Left column: profile summary, right column: editable personal information form --%>
 <div class="row g-3">
 
   <!-- LEFT: SUMMARY -->
   <div class="col-md-4">
     <div class="profile-left">
+        <%-- Avatar shows the uploaded image, or falls back to the user's initial --%>
       <div class="avatar">
         <asp:Image ID="imgAvatar" runat="server" Visible="false" />
            <span id="initialSpan" runat="server"></span>
@@ -22,6 +25,7 @@
       <div class="email"><asp:Label ID="lblEmail" runat="server" /></div>
 
       <div class="text-center mb-3">
+          <%-- Role badge (Donor / NGO) styled by RoleClass from code-behind --%>
         <span class='<%# "badge-role " + RoleClass %>'>
           <asp:Label ID="lblRole" runat="server" />
         </span>
@@ -41,7 +45,7 @@
   <!-- RIGHT: FORM -->
   <div class="col-md-8">
     <div class="panel">
-      <h5>Personal Information</h5>
+      <h5>Personal Information</h5>  <%-- Personal information form - email is read-only, other fields can be edited --%>
 
       <div class="row g-3">
         <div class="col-md-6">
@@ -64,6 +68,7 @@
       </div>
 
       <div class="text-end mt-4">
+          <%-- Save button - handled by btnSave_Click in code-behind --%>
         <asp:Button ID="btnSave" runat="server" Text="Save Changes"
                     CssClass="btn btn-success px-4 py-2" OnClick="btnSave_Click" />
       </div>

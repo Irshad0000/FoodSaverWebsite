@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Dashboard.Master" AutoEventWireup="true" CodeBehind="DonateFood.aspx.cs" Inherits="FoodSaver.DonateFood" %>
 <asp:Content ID="C1" ContentPlaceHolderID="MainContent" runat="server">
+    <%-- Donate Food page - form for donors to submit a new food donation --%>
 
 <div class="db-crumbs">
   <a href="Dashboard.aspx">Dashboard</a> &rsaquo; Donate Food
@@ -11,6 +12,7 @@
 
 <asp:Label ID="lblMsg" runat="server" CssClass="d-block mb-3" />
 
+    <%-- Left column: donation form, right column: image upload and submit button --%>
 <div class="row g-3">
   <!-- LEFT: FORM -->
   <div class="col-md-8">
@@ -20,6 +22,7 @@
       <div class="row g-3">
         <div class="col-md-6">
           <label class="form-label">Food Name</label>
+            <%-- Basic food details - name, type, quantity and category --%>
           <asp:TextBox ID="txtFoodName" runat="server" CssClass="form-control" placeholder="Enter food name" />
         </div>
 
@@ -51,6 +54,7 @@
         </div>
 
         <div class="col-md-6">
+            <%-- Pickup date and time so the NGO knows when to collect --%>
           <label class="form-label">Pick-up Date</label>
           <asp:TextBox ID="txtPickupDate" runat="server" CssClass="form-control" TextMode="Date" />
         </div>
@@ -89,6 +93,7 @@
       <asp:Label ID="lblImageName" runat="server" CssClass="text-muted d-block text-center mt-2 small" />
     </div>
 
+      <%-- Submit button - handled by btnSubmit_Click in code-behind --%>
     <asp:Button ID="btnSubmit" runat="server" Text="Submit Donation"
                 CssClass="btn btn-success w-100 py-3" OnClick="btnSubmit_Click" />
   </div>

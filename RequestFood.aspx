@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Dashboard.Master" AutoEventWireup="true" CodeBehind="RequestFood.aspx.cs" Inherits="FoodSaver.RequestFood" %>
 <asp:Content ID="C1" ContentPlaceHolderID="MainContent" runat="server">
+    <%-- Request Food page - form for NGOs to request food they need --%>
 
 <div class="db-crumbs">
   <a href="Dashboard.aspx">Dashboard</a> &rsaquo; Request Food
@@ -11,10 +12,12 @@
 
 <asp:Label ID="lblMsg" runat="server" CssClass="d-block mb-3" />
 
+    <%-- Left column: request form, right column: urgency level and submit button --%>
 <div class="row g-3">
   <!-- LEFT: FORM -->
   <div class="col-md-8">
     <div class="form-panel">
+        <%-- Food type, category, quantity, required date and address --%>
       <h5>Request Information</h5>
 
       <div class="row g-3">
@@ -68,6 +71,7 @@
   <!-- RIGHT: URGENCY + SUBMIT -->
   <div class="col-md-4">
     <div class="form-panel mb-3">
+        <%-- Urgency radio buttons - High is selected by default --%>
       <h5>Urgency Level</h5>
 
       <div class="urgency-option">
@@ -95,6 +99,7 @@
       </div>
     </div>
 
+      <%-- Submit button - handled by btnSubmit_Click in code-behind --%>
     <asp:Button ID="btnSubmit" runat="server" Text="Submit Request"
                 CssClass="btn btn-success w-100 py-3" OnClick="btnSubmit_Click" />
   </div>

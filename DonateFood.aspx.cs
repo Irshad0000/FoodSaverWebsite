@@ -5,11 +5,11 @@ using System.Web.UI;
 
 namespace FoodSaver
 {
-    public partial class DonateFood : Page
+    public partial class DonateFood : Page  // Code-behind for Donate Food page - validates input, handles image upload and saves the donation
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserId"] == null)
+            if (Session["UserId"] == null)  // Make sure the user is logged in before showing the form
             {
                 Response.Redirect("Login.aspx");
                 return;
@@ -17,14 +17,16 @@ namespace FoodSaver
 
             if (!IsPostBack)
             {
-                txtPickupDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
+                txtPickupDate.Text = DateTime.Now.ToString("yyyy-MM-dd"); // Pre-fill the pickup date with today's date as a default
             }
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
+            // Show validation errors in red by default
             lblMsg.CssClass = "d-block mb-3 text-danger";
 
+            // Check that all required fields have been filled in
             if (string.IsNullOrWhiteSpace(txtFoodName.Text) ||
                 string.IsNullOrWhiteSpace(ddlFoodType.SelectedValue) ||
                 string.IsNullOrWhiteSpace(txtQuantity.Text) ||
@@ -69,6 +71,7 @@ namespace FoodSaver
 
             var userId = Convert.ToInt32(Session["UserId"]);
 
+            // Insert the new donation with a 'Pending' status so NGOs can see it
             DbHelper.ExecuteNonQuery(@"
                 INSERT INTO Donations
                   (DonorId, FoodName, FoodType, Category, Quantity,
@@ -88,9 +91,11 @@ namespace FoodSaver
                 new SqlParameter("@nt", txtNotes.Text.Trim()),
                 new SqlParameter("@img", (object)imagePath ?? DBNull.Value));
 
+            // Send the donor to the success page after the donation is saved
             Response.Redirect("DonateSuccess.aspx");
         }
 
+        // Returns the selected category, or an empty string if none was chosen
         private string ddlFoodCategorySafe()
         {
             return string.IsNullOrEmpty(ddlCategory.SelectedValue)
